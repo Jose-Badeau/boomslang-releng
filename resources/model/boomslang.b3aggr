@@ -3,25 +3,28 @@
   <validationSets label="Boomslang">
     <contributions label="Boomslang">
       <repositories location="https://dl.bintray.com/jose-badeau/boomslang-core">
-        <features name="com.wireframesketcher.feature.group" versionRange="4.6.4"/>
-        <features name="com.wireframesketcher.model.patch.feature.group" versionRange="4.6.4.201608251349"/>
         <features name="org.boomslang.dsl.feature.feature.feature.group" versionRange="0.1.0.201608251430"/>
         <features name="org.boomslang.dsl.mapping.feature.feature.group" versionRange="0.1.0.201608251430"/>
         <features name="org.boomslang.feature.feature.group" versionRange="0.1.0.201608251430"/>
       </repositories>
-      <repositories location="https://dl.bintray.com/jose-badeau/boomslang-wireframesketcher/">
-        <features name="com.wireframesketcher.feature.group" versionRange="4.6.4"/>
-        <features name="com.wireframesketcher.model.patch.feature.group" versionRange="4.6.4.201608251349"/>
-      </repositories>
       <repositories location="https://dl.bintray.com/jose-badeau/boomslang-geb/">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="0.1.0.201609011239"/>
+      </repositories>
+      <repositories location="https://dl.bintray.com/jose-badeau/boomslang-wireframesketcher">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.6.4"/>
+        <features name="com.wireframesketcher.model.patch.feature.group" versionRange="4.6.4"/>
       </repositories>
     </contributions>
   </validationSets>
   <validationSets label="Base" extends="//@validationSets[label='Boomslang']">
-    <validationRepositories location="http://wireframesketcher.com/updates"/>
+    <contributions label="Wireframesketcher">
+      <repositories location="http://wireframesketcher.com/updates">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.6.4"/>
+      </repositories>
+    </contributions>
     <validationRepositories location="http://download.eclipse.org/releases/neon"/>
     <validationRepositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
   </validationSets>
   <configurations/>
+  <configurations architecture="x86_64"/>
 </aggregator:Aggregation>
