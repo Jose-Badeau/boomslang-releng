@@ -18,7 +18,7 @@ script:
 - git checkout release/1.0.0
 - mvn clean install
 - cd ../../..
-- mvn clean install
+- mvn clean install -Pproduct
 after_success: 
    - #java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang updates
    - #bash -e ./deleteExistingP2Content.sh
