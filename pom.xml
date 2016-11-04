@@ -87,9 +87,7 @@
 						<artifactId>tycho-eclipserun-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<appArgLine>-data ${project.build.directory}/ws -application
-								org.eclipse.b3.cli.headless aggregate --buildModel
-								${project.basedir}/resources/model/boomslang.b3aggr</appArgLine>
+							<appArgLine>-data ${project.build.directory}/ws -application org.eclipse.b3.cli.headless aggregate --buildModel ${project.basedir}/resources/model/boomslang.b3aggr</appArgLine>
 							<argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
 							<dependencies>
 								<dependency>
