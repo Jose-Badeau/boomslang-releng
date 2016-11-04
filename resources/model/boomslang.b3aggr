@@ -2,17 +2,17 @@
 <aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="Boomslang" label="Boomslang" buildRoot="../../target/build">
   <validationSets label="Boomslang">
     <contributions label="Boomslang">
-      <repositories location="https://dl.bintray.com/jose-badeau/boomslang-core">
+      <repositories location="../../target/products/boomslang-core/org.boomslang.repository/target/repository">
         <features name="org.boomslang.dsl.feature.feature.feature.group" versionRange="0.1.0.201608251430"/>
         <features name="org.boomslang.dsl.mapping.feature.feature.group" versionRange="0.1.0.201608251430"/>
         <features name="org.boomslang.feature.feature.group" versionRange="0.1.0.201608251430"/>
       </repositories>
-      <repositories location="https://dl.bintray.com/jose-badeau/boomslang-geb/">
+      <repositories location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="0.1.0.201609011239"/>
       </repositories>
-      <repositories location="https://dl.bintray.com/jose-badeau/boomslang-wireframesketcher">
-        <features name="com.wireframesketcher.feature.group" versionRange="4.6.4"/>
-        <features name="com.wireframesketcher.model.patch.feature.group" versionRange="4.6.4"/>
+      <repositories location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
+        <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0.201611041806"/>
       </repositories>
     </contributions>
   </validationSets>
