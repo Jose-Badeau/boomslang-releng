@@ -3,6 +3,7 @@ branches:
   only:
     - ^release.*
 script:
+	- echo "Start releasing boomslang..."
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher
