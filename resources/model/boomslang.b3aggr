@@ -7,14 +7,14 @@
         <features name="org.boomslang.dsl.feature.feature.feature.group" versionRange="1.0.0"/>
         <features name="org.boomslang.dsl.mapping.feature.feature.group" versionRange="1.0.0"/>
         <features name="org.boomslang.feature.feature.group" versionRange="1.0.0"/>
-        <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0.201611041806"/>
+        <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0"/>
       </repositories>
       <repositories location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="1.0.0"/>
       </repositories>
       <repositories location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
-        <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0.201611041806"/>
+        <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0"/>
       </repositories>
     </contributions>
   </validationSets>
