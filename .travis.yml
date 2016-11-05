@@ -1,12 +1,11 @@
-language: java
 branches:
   only:
     - ^release.*
-before_script:
+language: java
+script:
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher
-script:
     - mkdir target
     - mkdir target/products
     - cd target/products
