@@ -1,6 +1,6 @@
 branches:
-  except:
-	- master
+  only:
+	- ^release.*
 language: java
 before_script:
 	- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
