@@ -1,7 +1,4 @@
 language: java
-branches:
-  only:
-    - ^release.*
 script:
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core
