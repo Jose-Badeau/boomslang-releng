@@ -1,8 +1,8 @@
 language: java
 script:
-    - #java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
-    - #java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core
-    - #java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb 1.0.0
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core 1.0.0
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher 4.7.0
     - mkdir target
     - mkdir target/products
     - cd target/products
