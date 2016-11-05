@@ -1,29 +1,36 @@
+branches:
+  except:
+	- master
 language: java
+before_script:
+	- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb
+	- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core
+	- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher
 script:
-- mkdir target
-- mkdir target/products
-- cd target/products
-- git clone https://github.com/Jose-Badeau/boomslang-geb.git
-- git clone https://github.com/Jose-Badeau/boomslang-core.git
-- git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
-- cd boomslang-wireframesketcher
-- git checkout release/4.7.0
-- mvn clean install deploy
-- cd com.wireframesketcher.model.repository.remote
-- mvn clean install deploy
-- cd ../../boomslang-core
-- git checkout release/1.0.0
-- mvn clean install deploy
-- cd ../boomslang-geb
-- git checkout release/1.0.0
-- mvn clean install deploy
-- cd ../../..
-- mvn package -Pproduct
+	- mkdir target
+	- mkdir target/products
+	- cd target/products
+	- git clone https://github.com/Jose-Badeau/boomslang-geb.git
+	- git clone https://github.com/Jose-Badeau/boomslang-core.git
+	- git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
+	- cd boomslang-wireframesketcher
+	- git checkout release/4.7.0
+	- mvn clean install deploy
+	- cd com.wireframesketcher.model.repository.remote
+	- mvn clean install deploy
+	- cd ../../boomslang-core
+	- git checkout release/1.0.0
+	- mvn clean install deploy
+	- cd ../boomslang-geb
+	- git checkout release/1.0.0
+	- mvn clean install deploy
+	- cd ../../..
+	- mvn package -Pproduct
 after_success:
-- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang updates
-- bash -e ./deleteExistingP2Content.sh
-- bash -e ./upload.sh $BT_USER $BT_APIKEY jose-badeau boomslang updates 1.0.0 target/build/final
+	- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang updates
+	- bash -e ./deleteExistingP2Content.sh
+	- bash -e ./upload.sh $BT_USER $BT_APIKEY jose-badeau boomslang updates 1.0.0 target/build/final
 env:
   global:
-  - secure: Dxcqtel4fT81Zx3ZofHIKMgOUVOcu+tkcOyUKCizN+yL2ZqZu7njhlLJeybpsI/OQgKZPcky46WpEprttfBenEawt8Vd0F02MnSqAen33lzdFRxY25zQjNpiO2EZPJR3C+ZvTAqW8px94xjGoY+HULQkMscJ2TXfzVskO69atfn6Ir5REmXXRuJMOGVq9Aei7QevN6bbCgkLKRWiPoxqlqN5thlJPJDAzf4tDzby96QDRhBP2URM/Jz4nAtS5tThtNIsJ1BQK2F1WraP3B093aHqZk8HrNQCLr02UxURx4A8W4KjUGQjDOT4f0O2YyVB1PxsdtthU+5apk8IoDFoMSveWn0mlAOMKiUmmCWJd7bnl6Zj4wlp5zHu8jEeqw9IYU0iaxg4nCQkbNA9yyZQQCvicur0jtQY79xMNQr5JaQVeMcsUiZnT6AoY6bD8U1iWJ2K9P5BAU4mx7AR4CJgS4A0AgcZFsecayOl1RfpUn9QB0Rp/VDg2Rq2T5tPcXR9z9IveclwT/IY+CvU2UEj7JxT3BmP/QV47v3pzPtvs/U8qYo9bvI8E3GdTknsUUQWjcoHnw/7nVfnkYpWfoZobCldojrGcZm45IVr3lPxY6Cd4XHvd7FJ4PbSH8AG6acHXrEN5smxpjuVecNvsF1iaQbGfOk4At6UD6eaFzajpqs=
-  - secure: PiJMO/6aIGu/wTgBBjYoF4j1Rj/HlSqgpqc7QuJlREQRqnvalkcsv9NRcxyxgFQTcbby9KmIUvpgPRpePjzObjZH7CmQah2tpkOL82EXF6YecW5csI7Fkk7ptY+bXrBosdr4S5bZEmShu7CLWpapmL5LINMhTyHmL/TBd68MxDjp+Vwj5+g5wqKVCDy1odnylk8JvMTyotrNOIWHY2JrLDaaI0m91CjuWHiyg7Srm7UTwfvOlWRCGAH5wOuRrU31D5/Q7zBFysJkz26RSkKCvozqQiJTW4FOQP9gr6c62m2dSg+wmGl+8F9XVqSCj0wXKGBppi6tyoBXd2JQLFyEBvQEEBDPKqOjiGC984kglQzAU0bphNVrBl4yrxK0PMXFuoHGSO3DgJ8rKAmBeqpvrpClnID9HmCMShZij+BX9K1hjXxVk+OxvY790uQV5B06YNRjH2Q9fSBdGcGr2U6xpgFN5SlZK03rY+71EGW36S5phqsd6rmAvtmZOcq0GnYlXuZ5Kwmv5dnlbUv5s408vg/LNrkLXwLI+zrt25AMq2a9r3DSuoIe5z9t/brOQnftfzPnfRCo695i20i+o9s1Lc9Mn7h+tpX8wM/88m28sVeqjhPdVSdi0MScsoD8GUaRfg0YRSZ2lDV57X+PQNrDyIXgQ7W8/vKLK5LGjXI7iRA=
+  	- secure: Dxcqtel4fT81Zx3ZofHIKMgOUVOcu+tkcOyUKCizN+yL2ZqZu7njhlLJeybpsI/OQgKZPcky46WpEprttfBenEawt8Vd0F02MnSqAen33lzdFRxY25zQjNpiO2EZPJR3C+ZvTAqW8px94xjGoY+HULQkMscJ2TXfzVskO69atfn6Ir5REmXXRuJMOGVq9Aei7QevN6bbCgkLKRWiPoxqlqN5thlJPJDAzf4tDzby96QDRhBP2URM/Jz4nAtS5tThtNIsJ1BQK2F1WraP3B093aHqZk8HrNQCLr02UxURx4A8W4KjUGQjDOT4f0O2YyVB1PxsdtthU+5apk8IoDFoMSveWn0mlAOMKiUmmCWJd7bnl6Zj4wlp5zHu8jEeqw9IYU0iaxg4nCQkbNA9yyZQQCvicur0jtQY79xMNQr5JaQVeMcsUiZnT6AoY6bD8U1iWJ2K9P5BAU4mx7AR4CJgS4A0AgcZFsecayOl1RfpUn9QB0Rp/VDg2Rq2T5tPcXR9z9IveclwT/IY+CvU2UEj7JxT3BmP/QV47v3pzPtvs/U8qYo9bvI8E3GdTknsUUQWjcoHnw/7nVfnkYpWfoZobCldojrGcZm45IVr3lPxY6Cd4XHvd7FJ4PbSH8AG6acHXrEN5smxpjuVecNvsF1iaQbGfOk4At6UD6eaFzajpqs=
+ 	- secure: PiJMO/6aIGu/wTgBBjYoF4j1Rj/HlSqgpqc7QuJlREQRqnvalkcsv9NRcxyxgFQTcbby9KmIUvpgPRpePjzObjZH7CmQah2tpkOL82EXF6YecW5csI7Fkk7ptY+bXrBosdr4S5bZEmShu7CLWpapmL5LINMhTyHmL/TBd68MxDjp+Vwj5+g5wqKVCDy1odnylk8JvMTyotrNOIWHY2JrLDaaI0m91CjuWHiyg7Srm7UTwfvOlWRCGAH5wOuRrU31D5/Q7zBFysJkz26RSkKCvozqQiJTW4FOQP9gr6c62m2dSg+wmGl+8F9XVqSCj0wXKGBppi6tyoBXd2JQLFyEBvQEEBDPKqOjiGC984kglQzAU0bphNVrBl4yrxK0PMXFuoHGSO3DgJ8rKAmBeqpvrpClnID9HmCMShZij+BX9K1hjXxVk+OxvY790uQV5B06YNRjH2Q9fSBdGcGr2U6xpgFN5SlZK03rY+71EGW36S5phqsd6rmAvtmZOcq0GnYlXuZ5Kwmv5dnlbUv5s408vg/LNrkLXwLI+zrt25AMq2a9r3DSuoIe5z9t/brOQnftfzPnfRCo695i20i+o9s1Lc9Mn7h+tpX8wM/88m28sVeqjhPdVSdi0MScsoD8GUaRfg0YRSZ2lDV57X+PQNrDyIXgQ7W8/vKLK5LGjXI7iRA=
