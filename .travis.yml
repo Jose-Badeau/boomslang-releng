@@ -23,7 +23,7 @@ script:
     - git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
     - cd boomslang-wireframesketcher
     - git checkout release/4.7.0
-    - mvn -X clean install deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - mvn clean install deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd com.wireframesketcher.model.repository.remote
     - mvn clean install deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd ../../boomslang-core
