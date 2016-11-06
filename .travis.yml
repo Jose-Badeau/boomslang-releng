@@ -10,7 +10,7 @@ addons:
       - oracle-java8-installer
 script:
     - pwd
-    - cd TRAVIS_BUILD_DIR
+    - cd $TRAVIS_BUILD_DIR
     - pwd
 env:
   global:
