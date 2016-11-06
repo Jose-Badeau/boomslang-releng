@@ -23,15 +23,19 @@ script:
     - git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
     - cd boomslang-wireframesketcher
     - git checkout release/4.7.0
-    - mvn clean install # deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd com.wireframesketcher.model.repository.remote
-    - mvn clean install # deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd ../../boomslang-core
     - git checkout release/1.0.0
-    - mvn clean install # deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - mvn clean install
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd ../boomslang-geb
     - git checkout release/1.0.0
-    - mvn clean install # deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd ../../..
 after_success:
     - mvn package -Pproduct
