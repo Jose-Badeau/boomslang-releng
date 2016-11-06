@@ -1,4 +1,6 @@
 language: java
+jdk:
+  - oraclejdk8
 script:
     - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb 1.0.0
     - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core 1.0.0
