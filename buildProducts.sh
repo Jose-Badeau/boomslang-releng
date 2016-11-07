@@ -12,6 +12,7 @@ function main(){
 }
 
 function buildProducts() {
+  echo "$@"
   echo "${BUILD_DIR}"
   echo "${WFS_VERSION}"
   echo "${BOOMSLANG_VERSION}"
