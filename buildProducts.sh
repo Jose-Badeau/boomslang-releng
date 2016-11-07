@@ -12,9 +12,9 @@ function main(){
 }
 
 function buildProducts() {
-  echo "BUILD_DIR = ${BUILD_DIR}"
-  echo "WFS_VERSION = ${WFS_VERSION}"
-  echo "BOOMSLANG_VERSION = ${BOOMSLANG_VERSION}"
+  echo "${BUILD_DIR}"
+  echo "${WFS_VERSION}"
+  echo "${BOOMSLANG_VERSION}"
 
   echo "Create directory structures..."
   cd $BUILD_DIR
