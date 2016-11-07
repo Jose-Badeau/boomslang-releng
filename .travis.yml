@@ -1,4 +1,4 @@
- language: java
+language: java
 jdk:
   - oraclejdk8
 cache:
@@ -8,33 +8,19 @@ addons:
   apt:
     packages:
     - oracle-java8-installer
+env:
+    - WFS_VERSION=4.7.0
+    - BOOMSLANG_VERSION=1.0.0
 script:
-    - cd $TRAVIS_BUILD_DIR
-    - mkdir -p target/products
-    - cd target/products
-    - git clone https://github.com/Jose-Badeau/boomslang-geb.git
-    - git clone https://github.com/Jose-Badeau/boomslang-core.git
-    - git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
-    - cd boomslang-wireframesketcher
-    - git checkout release/4.7.0
-    - mvn clean deploy --settings $TRAVIS_BUILD_DIR/settings.xml
-    - cd com.wireframesketcher.model.repository.remote
-    - mvn clean deploy --settings $TRAVIS_BUILD_DIR/settings.xml
-    - cd ../../boomslang-core
-    - git checkout release/1.0.0
-    - mvn clean deploy --settings $TRAVIS_BUILD_DIR/settings.xml
-    - cd ../boomslang-geb
-    - git checkout release/1.0.0
-    - mvn clean deploy --settings $TRAVIS_BUILD_DIR/settings.xml
-    - cd $BUILD_DIR
+    - bash -e ./buildProducts.sh $TRAVIS_BUILD_DIR $WFS_VERSION $BOOMSLANG_VERSION
 after_success:
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb 1.0.0
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core 1.0.0
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher 4.7.0
+    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb $BOOMSLANG_VERSION
+    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core $BOOMSLANG_VERSION
+    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher $WFS_VERSION
     - mvn package -Pproduct
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang updates
     - bash -e ./deleteExistingP2Content.sh
-    - bash -e ./upload.sh $BT_USER $BT_APIKEY jose-badeau boomslang updates 1.0.0 target/build/final
+    - bash -e ./upload.sh $BT_USER $BT_APIKEY jose-badeau boomslang updates $BOOMSLANG_VERSION target/build/final
 env:
   global:
     - secure: Dxcqtel4fT81Zx3ZofHIKMgOUVOcu+tkcOyUKCizN+yL2ZqZu7njhlLJeybpsI/OQgKZPcky46WpEprttfBenEawt8Vd0F02MnSqAen33lzdFRxY25zQjNpiO2EZPJR3C+ZvTAqW8px94xjGoY+HULQkMscJ2TXfzVskO69atfn6Ir5REmXXRuJMOGVq9Aei7QevN6bbCgkLKRWiPoxqlqN5thlJPJDAzf4tDzby96QDRhBP2URM/Jz4nAtS5tThtNIsJ1BQK2F1WraP3B093aHqZk8HrNQCLr02UxURx4A8W4KjUGQjDOT4f0O2YyVB1PxsdtthU+5apk8IoDFoMSveWn0mlAOMKiUmmCWJd7bnl6Zj4wlp5zHu8jEeqw9IYU0iaxg4nCQkbNA9yyZQQCvicur0jtQY79xMNQr5JaQVeMcsUiZnT6AoY6bD8U1iWJ2K9P5BAU4mx7AR4CJgS4A0AgcZFsecayOl1RfpUn9QB0Rp/VDg2Rq2T5tPcXR9z9IveclwT/IY+CvU2UEj7JxT3BmP/QV47v3pzPtvs/U8qYo9bvI8E3GdTknsUUQWjcoHnw/7nVfnkYpWfoZobCldojrGcZm45IVr3lPxY6Cd4XHvd7FJ4PbSH8AG6acHXrEN5smxpjuVecNvsF1iaQbGfOk4At6UD6eaFzajpqs=
