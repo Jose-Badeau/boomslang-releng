@@ -7,16 +7,36 @@ cache:
 addons:
   apt:
     packages:
-    - oracle-java8-installer
+      - oracle-java8-installer
 env:
     - WFS_VERSION=4.7.0
     - BOOMSLANG_VERSION=1.0.0
 script:
-    - bash -e ./buildProducts.sh $TRAVIS_BUILD_DIR $WFS_VERSION $BOOMSLANG_VERSION
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb $BOOMSLANG_VERSION
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core $BOOMSLANG_VERSION
+    - ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher $WFS_VERSION
+    - mkdir -p target/products
+    - cd target/products
+    - git clone https://github.com/Jose-Badeau/boomslang-geb.git
+    - git clone https://github.com/Jose-Badeau/boomslang-core.git
+    - git clone https://github.com/Jose-Badeau/boomslang-wireframesketcher
+    - cd boomslang-wireframesketcher
+    - git checkout release/$WFS_VERSION
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - cd com.wireframesketcher.model.repository.remote
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - cd ../../boomslang-core
+    - git checkout release/$BOOMSLANG_VERSION
+    - mvn clean install
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - cd ../boomslang-geb
+    - git checkout release/$BOOMSLANG_VERSION
+    - mvn clean install 
+    - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
+    - cd $TRAVIS_BUILD_DIR
 after_success:
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb $BOOMSLANG_VERSION
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-core $BOOMSLANG_VERSION
-    - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher $WFS_VERSION
     - mvn package -Pproduct
     - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY jose-badeau boomslang updates
     - bash -e ./deleteExistingP2Content.sh
