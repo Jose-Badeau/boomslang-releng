@@ -11,10 +11,10 @@ PCK_VERSION=$6
 ###############################################
 
 function main(){
-  deploy_updatesite
+  deleteMavenArtifacts
 }
 
-function deploy_updatesite() {
+function deleteMavenArtifacts() {
   echo "${BINTRAY_USER}"
   echo "${BINTRAY_OWNER}"
   echo "${BINTRAY_REPO}"
