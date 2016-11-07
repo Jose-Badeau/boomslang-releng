@@ -1,4 +1,4 @@
-language: java
+ language: java
 jdk:
   - oraclejdk8
 cache:
@@ -12,6 +12,8 @@ env:
     - WFS_VERSION=4.7.0
     - BOOMSLANG_VERSION=1.0.0
 script:
+    - echo $WFS_VERSION 
+    - echo $BOOMSLANG_VERSION
     - bash -e ./buildProducts.sh $TRAVIS_BUILD_DIR $WFS_VERSION $BOOMSLANG_VERSION
 after_success:
     - bash -e ./deleteExistingMavenArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-geb $BOOMSLANG_VERSION
