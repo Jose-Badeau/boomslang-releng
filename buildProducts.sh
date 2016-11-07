@@ -29,19 +29,19 @@ function buildProducts() {
 
   echo "Build boomslang-wireframesketcher..."
   cd boomslang-wireframesketcher
-  git checkout release/$WFS_VERSION
+  git checkout release/${WFS_VERSION}
   mvn clean deploy --settings $BUILD_DIR/settings.xml
   cd com.wireframesketcher.model.repository.remote
   mvn clean deploy --settings $BUILD_DIR/settings.xml
 
   echo "Build boomslang-core..."
   cd ../../boomslang-core
-  git checkout release/$BOOMSLANG_VERSION
+  git checkout release/${BOOMSLANG_VERSION}
   mvn clean deploy --settings $BUILD_DIR/settings.xml
 
   echo "Build boomslang-geb..."
   cd ../boomslang-geb
-  git checkout release/$BOOMSLANG_VERSION
+  git checkout release/${BOOMSLANG_VERSION}
   mvn clean deploy --settings $BUILD_DIR/settings.xml
 
   cd $BUILD_DIR
