@@ -3,7 +3,7 @@
   <validationSets label="Boomslang">
     <contributions label="Boomslang">
       <repositories location="../../target/products/boomslang-core/org.boomslang.repository/target/repository">
-        <bundles name="com.wireframesketcher.model" versionRange="4.7.0.201611072100"/>
+        <bundles name="com.wireframesketcher.model" versionRange="4.7.0"/>
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0" categories="//@customCategories[identifier='Boomslang']"/>
         <features name="org.boomslang.dsl.feature.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
         <features name="org.boomslang.dsl.mapping.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
