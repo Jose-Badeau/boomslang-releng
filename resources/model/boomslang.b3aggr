@@ -20,7 +20,7 @@
       <repositories location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
       </repositories>
-      <repositories enabled="false" location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
+      <repositories location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
       </repositories>
     </contributions>
