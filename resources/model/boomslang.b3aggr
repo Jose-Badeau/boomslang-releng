@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="Boomslang" label="Boomslang" buildRoot="../../target/build">
-  <validationSets label="Boomslang">
+  <validationSets label="Boomslang WFS">
+    <contributions label="Boomslang WFS">
+      <repositories location="../../target/products/wfs/build/final">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
+      </repositories>
+    </contributions>
+  </validationSets>
+  <validationSets label="Boomslang" extends="//@validationSets[label='Boomslang%20WFS'] //@validationSets[label='Base']">
     <contributions label="Boomslang">
       <repositories location="../../target/products/boomslang-core/org.boomslang.repository/target/repository">
         <bundles name="com.wireframesketcher.model" versionRange="4.7.0"/>
@@ -13,19 +20,20 @@
       <repositories location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
       </repositories>
-      <repositories location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
+      <repositories enabled="false" location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
       </repositories>
     </contributions>
   </validationSets>
-  <validationSets label="Base" extends="//@validationSets[label='Boomslang']">
-    <contributions label="Wireframesketcher">
+  <validationSets label="Base">
+    <contributions enabled="false" label="Wireframesketcher">
       <repositories location="http://wireframesketcher.com/updates">
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0" categories="//@customCategories[identifier='Boomslang']"/>
       </repositories>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/releases/neon"/>
     <validationRepositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
+    <validationRepositories location="http://wireframesketcher.com/updates"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>

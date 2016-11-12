@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="Boomslang" label="Boomslang" buildRoot="../../target/products/wfs/build">
+  <validationSets label="Wireframesketcher" extends="//@validationSets[label='Base']">
+    <contributions label="Mirroring WFS">
+      <repositories location="../../target/mirror/classes/wfs/repository">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
+      </repositories>
+    </contributions>
+  </validationSets>
+  <validationSets label="Base">
+    <contributions enabled="false" label="Wireframesketcher">
+      <repositories location="http://wireframesketcher.com/updates">
+        <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
+      </repositories>
+    </contributions>
+    <validationRepositories location="http://download.eclipse.org/releases/neon"/>
+  </validationSets>
+  <configurations/>
+  <configurations architecture="x86_64"/>
+</aggregator:Aggregation>
