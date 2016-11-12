@@ -2,7 +2,7 @@
 <aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="Boomslang" label="Boomslang" buildRoot="../../target/build">
   <validationSets label="Boomslang WFS">
     <contributions label="Boomslang WFS">
-      <repositories location="../../target/products/wfs/build/final">
+      <repositories location="https://dl.bintray.com/jose-badeau/wfs-repo/">
         <features name="com.wireframesketcher.feature.group" versionRange="4.7.0"/>
       </repositories>
     </contributions>
