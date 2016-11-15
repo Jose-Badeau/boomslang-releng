@@ -17,7 +17,7 @@
         <features name="org.boomslang.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
         <features name="org.boomslang.wireframesketcher.model.patch.feature.group" versionRange="4.7.0" categories="//@customCategories[identifier='Boomslang']"/>
       </repositories>
-      <repositories location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
+      <repositories enabled="false" location="../../target/products/boomslang-geb/org.boomslang.generator.geb.repository/target/repository">
         <features name="org.boomslang.generator.geb.feature.feature.group" versionRange="1.0.0" categories="//@customCategories[identifier='Boomslang']"/>
       </repositories>
       <repositories location="../../target/products/boomslang-wireframesketcher/com.wireframesketcher.model.repository.remote/target/repository">
