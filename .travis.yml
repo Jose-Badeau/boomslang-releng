@@ -20,6 +20,7 @@ script:
     - # git checkout release/4.7.0
     - mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=4.7.0
     - mvn clean install
+    - ./deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY jose-badeau boomslang-maven-repo boomslang-wireframesketcher 4.7.0
     - mvn deploy --settings $TRAVIS_BUILD_DIR/settings.xml
     - cd com.wireframesketcher.model.repository.remote
     - mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=4.7.0
